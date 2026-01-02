@@ -13,3 +13,15 @@ export async function getOrCreateMirrorProfile(userId: string) {
     },
   });
 }
+
+export async function getProfileByUserId(userId: string) {
+  const profile = await prisma.mirrorProfile.findUnique({
+    where: { userId },
+  });
+
+  if (!profile) {
+    throw new Error("Profile not found");
+  }
+
+  return profile;
+}

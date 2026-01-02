@@ -80,14 +80,18 @@ model MirrorProfile {
 }
 
 model Memory {
-  id          String      @id @default(cuid())
-  profileId   String
-  type        MemoryType
-  content     Json
-  importance  Int         @default(1)
-  createdAt   DateTime    @default(now())
+  id            String   @id @default(cuid())
+  profileId     String
+  key           String
+  value         Json
+  cognitiveType String
+  source        String   @default("onboarding")
+  createdAt     DateTime @default(now())
 
-  profile     MirrorProfile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  profile       MirrorProfile @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  @@index([profileId])
+  @@index([cognitiveType])
 }
 
 enum MemoryType {

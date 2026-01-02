@@ -86,6 +86,11 @@ model Memory {
   value         Json
   cognitiveType String
   source        String   @default("onboarding")
+
+  weight        Float    @default(1.0)
+  confidence    Float    @default(1.0)
+  lastAccessed  DateTime @default(now())
+
   createdAt     DateTime @default(now())
 
   profile       MirrorProfile @relation(fields: [profileId], references: [id], onDelete: Cascade)

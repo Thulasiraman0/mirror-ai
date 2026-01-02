@@ -20,3 +20,5 @@ export const CognitiveWindowMap: Record<CognitiveType, ContextWindow> = {
   IDENTITY_CORE: ContextWindow.IDENTITY,
   VALUE_SYSTEM: ContextWindow.IDENTITY,
 };
+
+
